@@ -1,15 +1,5 @@
 var path = require("path");
 var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-var settings = {
-	plugins: [
-	    new ExtractTextPlugin('./assets/css/styles.css', {
-	        allChunks: true
-	    })
-	],
-	module: ["es2015", "react"]
-}
 
 module.exports = {
     entry: {
@@ -21,21 +11,22 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /.jsx?$/,
+				exclude: /node_modules/,
+                test: /\.js|jsx$/,
                 loader: "babel-loader",
-                exclude: /node_modules/,
                 query: {
-                   presets: settings.module
+					presets: [
+						"react",
+					    "es2015",
+						"stage-1"
+                	],
+                    plugins: [
+                        "transform-decorators-legacy",
+						"transform-class-properties"
+                    ]
                 }
-            }, {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-raw-loader!autoprefixer-loader!sass-loader')
             }
         ]
-    },
-    plugins: settings.plugins,
-    sassLoader: {
-        includePaths: ['src/scss']
     },
     devServer: {
         historyApiFallback: true
