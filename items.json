@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "Blue T-Shirt",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Blue_Tshirt.jpg/220px-Blue_Tshirt.jpg",
+      "price": 240
+    },
+    {
+      "id": "2",
+      "name": "Black T-Shirt",
+      "photo": "http://images.footlocker.com/pi/23476011/zoom/jordan-all-day-t-shirt-mens",
+      "price": 265
+    },
+    {
+      "id": "3",
+      "name": "Rainbow T-Shirt",
+      "photo": "http://i3.cpcache.com/product/606802989/unicorn_kids_dark_tshirt.jpg?color=Navy&height=460&width=460&qv=90",
+      "price": 213
+    }
+  ]
+}

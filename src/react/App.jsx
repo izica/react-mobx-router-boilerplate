@@ -1,47 +1,22 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { observer } from "mobx-react";
-import { observable } from "mobx";
-import ItemStore from './ItemStore.js';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-@observer
-class ItemsList extends Component {
-    @observable new_item = {
-        name: 'tablet',
-        price: 2510
-    };
+// import { observer } from 'mobx-react';
+// import { observable } from 'mobx';
 
-    constructor (props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
+import { Layout } from './layout/Layout.jsx';
+import { Catalog } from './pages/catalog/Catalog.jsx';
+import { Basket } from './pages/basket/Basket.jsx';
 
-    handleChange(e){
-        this.new_item[e.target.name] = e.target.value;
-    }
+// require('../../scss/app.scss');
 
-    render() {
-        return <div>
-            <div className="" onClick={e => ItemStore.add('new', 12332)}>add</div>
-            <form>
-                <h2>Add new Item</h2>
-                <div>
-                    <label>
-                        name: <input className="" type="text" name="name" value={this.text} onChange={this.handleChange}/>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        name: <input className="" type="text" name="name" value={this.text} onChange={this.handleChange}/>
-                    </label>
-                </div>
-            </form>
-
-            <ul>
-                { ItemStore.items.map(item => <li key={item.id}>{item.name}, {item.price}</li>)}
-            </ul>
-        </div>
-    }
-}
-
-ReactDOM.render(<ItemsList />, document.getElementById('app'));
+ReactDOM.render(
+    <BrowserRouter>
+        <Layout>
+            <Route path='/catalog' component={ Catalog } />
+            <Route path='/basket' component={ Basket }/>
+        </Layout>
+    </BrowserRouter>,
+    document.getElementById('app')
+);
