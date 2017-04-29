@@ -1,22 +1,21 @@
 {
-  "name": "react-mobx-sass-webpack2-boilerplate",
+  "name": "react-router4-mobx-sass-webpack2-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ./webpack.config.js",
     "build": "webpack  --config ./webpack.production.config.js  --progress"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/izica/react-mobx-sass-webpack2-boilerplate.git"
+    "url": "git+https://github.com/izica/react-router4-mobx-sass-webpack2-boilerplate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/izica/react-mobx-sass-webpack2-boilerplate/issues"
+    "url": "https://github.com/izica/react-router4-mobx-sass-webpack2-boilerplate/issues"
   },
-  "homepage": "https://github.com/izica/react-mobx-sass-webpack2-boilerplate#readme",
+  "homepage": "https://github.com/izica/react-router4-mobx-sass-webpack2-boilerplate#readme",
   "dependencies": {
     "autoprefixer": "^6.7.7",
     "axios": "^0.16.1",
