@@ -1,39 +1,22 @@
+import React from 'react';
+import { observer, inject } from 'mobx-react';
+
+@inject('OrderStore')
 @observer
-class ItemsList extends Component {
-    @observable new_item = {
-        name: 'tablet',
-        price: 2510
-    };
-
-    constructor (props) {
-        super(props);
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e){
-        this.new_item[e.target.name] = e.target.value;
-    }
-
+export default class CatalogItems extends React.Component {
     render() {
-        return <div>
-            <div className='' onClick={e => ItemStore.add('new', 12332)}>add</div>
-            <form>
-                <h2>Add new Item</h2>
-                <div>
-                    <label>
-                        name: <input className='' type='text' name='name' value={this.text} onChange={this.handleChange}/>
-                    </label>
+        let {
+            OrderStore,
+            item
+        } = this.props;
+        return (
+            <div className="catalog-item">
+                <div className="catalog-item__name">{item.name}</div>
+                <div className="catalog-item__photo" style={{backgroundImage: item.photo}}></div>
+                <div className="catalog-item__button" onClick={ e => OrderStore.add(item)}>
+                    {item.price}$ | Add to basket
                 </div>
-                <div>
-                    <label>
-                        name: <input className='' type='text' name='name' value={this.text} onChange={this.handleChange}/>
-                    </label>
-                </div>
-            </form>
-
-            <ul>
-                { ItemStore.items.map(item => <li key={item.id}>{item.name}, {item.price}</li>)}
-            </ul>
-        </div>
+            </div>
+        )
     }
 }

@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 class OrderStoreItem {
     @observable quantity;
@@ -10,6 +10,10 @@ class OrderStoreItem {
         this.photo = item.photo;
         this.quantity = 1;
     }
+
+    @computed get total(){
+        return this.quantity * this.price;
+    }
 }
 
 class OrderStore {
@@ -17,20 +21,20 @@ class OrderStore {
 
     constructor(){
         this.add = this.add.bind(this);
+        this.remove = this.remove.bind(this);
     }
 
-    @action add(item){
-        let i = this.items.filter(i => i.id == item.id);
-        if(i[0]){
-            i[0].quantity++;
+    @action add(i){
+        let item = this.items.filter(item => item.id == i.id);
+        if(item[0]){
+            item[0].quantity++;
         }else{
-            this.items.push(new OrderStoreItem(item));
+            this.items.push(new OrderStoreItem(i));
         }
-
     }
 
-    @action quantity(item, value){
-        item.quantity += value;
+    @action remove(i){
+        this.items = this.items.filter(item => item.id != i.id);
     }
 }
 export default new OrderStore();

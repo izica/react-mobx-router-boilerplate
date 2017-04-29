@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { HeaderMenu } from './HeaderMenu.jsx';
+import HeaderMenu from './HeaderMenu.jsx';
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
     render() {
         return (
-            <div>
-                Logo
+            <div className="header">
+                <div className="header-logo">React + Mobx boilerplate</div>
                 <HeaderMenu/>
             </div>
         )

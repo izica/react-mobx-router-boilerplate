@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export class HeaderMenu extends React.Component {
+export default class HeaderMenu extends React.Component {
     render() {
         return (
-            <div>
-                <Link to="/catalog">Catalog</Link>
-                <Link to="/basket">Basket</Link>
+            <div className="header-menu">
+                <NavLink className="header-menu__item" activeClassName="header-menu__item--active" to="/catalog">Catalog</NavLink>
+                <NavLink className="header-menu__item" activeClassName="header-menu__item--active" to="/basket">Basket</NavLink>
             </div>
         )
     }

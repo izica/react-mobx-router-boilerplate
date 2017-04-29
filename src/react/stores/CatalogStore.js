@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
 
-class ItemStore {
+class CatalogStore {
     @observable items = Array();
 
     constructor(){
@@ -15,4 +15,4 @@ class ItemStore {
             .catch(error => console.log(error));
     }
 }
-export default new ItemStore();
+export default new CatalogStore();

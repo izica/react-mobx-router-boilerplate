@@ -1,17 +1,17 @@
 import React from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
-import ItemStore from '../../stores/ItemStore.js';
-import OrderStore from '../../stores/OrderStore.js';
+import CatalogItem from './CatalogItem.jsx';
 
+@inject('CatalogStore')
 @observer
-export class CatalogItems extends React.Component {
+export default class CatalogItems extends React.Component {
     render() {
-        console.log('catalog items');
+        let { CatalogStore } = this.props;
         return (
-            <ul>
-                { ItemStore.items.map(item => <li key={item.id}>{item.name}</li>) }
-            </ul>
+            <div className="catalog-items">
+                {CatalogStore.items.map(item => <CatalogItem key={item.id} item={item} />)}
+            </div>
         )
     }
 }

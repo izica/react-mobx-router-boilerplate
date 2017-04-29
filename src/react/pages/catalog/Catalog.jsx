@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import { CatalogBasket } from './CatalogBasket.jsx';
-import { CatalogItems } from './CatalogItems.jsx';
+import CatalogBasket from './CatalogBasket.jsx';
+import CatalogItems from './CatalogItems.jsx';
 
-export class Catalog extends React.Component {
+export default class Catalog extends React.Component {
     render() {
         return (
             <div className="">

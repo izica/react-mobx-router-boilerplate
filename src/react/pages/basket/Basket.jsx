@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class Basket extends React.Component {
+export default class Basket extends React.Component {
     render() {
         return (
             <div>
