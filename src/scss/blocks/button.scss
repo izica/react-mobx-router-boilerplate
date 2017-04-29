@@ -1,0 +1,20 @@
+.button{
+    text-transform: uppercase;
+    background: #c0392b;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-weight: 500;
+    &--small{
+
+    }
+    &--large{
+
+    }
+    &--gradient{
+        background: #c0392b;
+        background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);
+        background: linear-gradient(to right, #8e44ad, #c0392b);
+
+    }
+}

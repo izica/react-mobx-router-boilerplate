@@ -7,7 +7,7 @@ import CatalogItems from './CatalogItems.jsx';
 export default class Catalog extends React.Component {
     render() {
         return (
-            <div className="">
+            <div className="catalog">
                 <CatalogItems />
                 <CatalogBasket />
             </div>

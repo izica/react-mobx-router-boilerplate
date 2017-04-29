@@ -10,7 +10,7 @@ export default class CatalogItems extends React.Component {
         let { CatalogStore } = this.props;
         return (
             <div className="catalog-items">
-                {CatalogStore.items.map(item => <CatalogItem key={item.id} item={item} />)}
+                { CatalogStore.items.map(item => <CatalogItem key={ item.id } item={ item } />) }
             </div>
         )
     }
