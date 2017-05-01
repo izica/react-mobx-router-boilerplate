@@ -8,6 +8,7 @@ react-router v4
 postcss
 sass(scss)
 axios
+moment.js
 babel
 webpack
 webpack-dev-server
@@ -19,4 +20,3 @@ webpack-dev-server
 npm install
 npm start
 ```
-
