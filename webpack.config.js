@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: [
@@ -13,7 +13,7 @@ module.exports = {
         filename: './assets/js/bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 exclude: /node_modules/,
                 test: /\.js|jsx$/,
@@ -21,7 +21,7 @@ module.exports = {
                 query: {
                     presets: [
                         'react',
-                        'es2015',
+                        ["es2015", {"modules": false}],
                         'stage-1'
                     ],
                     plugins: [
@@ -32,7 +32,7 @@ module.exports = {
                 }
             }, {
                 test: /\.scss$/,
-                loader: 'style-loader!css-raw-loader!postcss-loader!sass-loader'
+                loader: 'style-loader!css-raw-loader!postcss-loader!sass-loader?sourceMap'
             }
         ]
     },
@@ -40,6 +40,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.LoaderOptionsPlugin({
             test: /\.scss$/,
+            minimize: true,
             options: {
                 sassLoader: {
                     includePaths: [path.resolve(__dirname, 'src', 'scss')]
@@ -48,7 +49,7 @@ module.exports = {
                     require('precss'),
                     require('autoprefixer')
                 ],
-                context: '/',
+                context: './',
                 output: {
                     path: './assets/css/styles.css'
                 }

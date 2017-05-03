@@ -1,56 +1,59 @@
-var path = require("path");
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-var settings = {
-	plugins: [
-	    new ExtractTextPlugin('./assets/css/styles.css', {
-	        allChunks: true
-	    }),
-	    new webpack.optimize.UglifyJsPlugin({
-	    	minimize: true,
-	    	warnings: false,
-	    	mangle: {
-	        	except: ['$super', '$', 'exports', 'require']
-		    }
-		}),
-	    new webpack.optimize.DedupePlugin(),
-	    new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': JSON.stringify('production')
-			}
-		})
-	],
-	module: ["es2015", "react"]
-}
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: {
-        bundle: "./src/react/App.jsx"
-    },
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080',
+        'webpack/hot/only-dev-server',
+        'react-hot-loader/patch',
+        './src/react/App.jsx',
+        './src/scss/app.scss',
+    ],
     output: {
-        filename: "./assets/js/bundle.js"
+        filename: './assets/js/bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /.jsx?$/,
-                loader: "babel-loader",
                 exclude: /node_modules/,
+                test: /\.js|jsx$/,
+                loader: 'babel-loader',
                 query: {
-                   presets: settings.module
+                    presets: [
+                        'react',
+                        'es2015',
+                        'stage-1'
+                    ],
+                    plugins: [
+                        'react-hot-loader/babel',
+                        'transform-decorators-legacy',
+                        'transform-class-properties'
+                    ]
                 }
             }, {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-raw-loader!autoprefixer!sass-loader')
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-raw-loader!postcss-loader!sass-loader'
+                })
             }
         ]
     },
-    plugins: settings.plugins,
-    sassLoader: {
-        includePaths: ['src/scss']
-    },
-    devServer: {
-        historyApiFallback: true
-    }
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            test: /\.scss$/,
+            minimize: true,
+            options: {
+                sassLoader: {
+                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
+                },
+                postcss: [
+                    require('precss'),
+                    require('autoprefixer')
+                ],
+            }
+        }),
+        new ExtractTextPlugin('./assets/css/styles.css'),
+    ],
 };
