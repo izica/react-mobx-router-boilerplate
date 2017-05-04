@@ -24,7 +24,17 @@ module.exports = {
                     ],
                     plugins: [
                         'transform-decorators-legacy',
-                        'transform-class-properties'
+                        'transform-class-properties',
+                        ["babel-plugin-root-import", [{
+                            "rootPathPrefix": "@",
+                            "rootPathSuffix": "src/react"
+                        }, {
+                            "rootPathPrefix": "#",
+                            "rootPathSuffix": "src/react/stores"
+                        }, {
+                            "rootPathPrefix": "~",
+                            "rootPathSuffix": "src/react/elements"
+                        }]]
                     ]
                 }
             }, {
@@ -63,5 +73,8 @@ module.exports = {
             filename: './assets/css/styles.css',
             allChunks: true
         })
-    ]
+    ],
+    resolve: {
+        extensions: [".jsx", ".js", ".json", "*"],
+    },
 };

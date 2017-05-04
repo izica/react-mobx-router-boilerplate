@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 
-import CatalogBasketItem from './CatalogBasketItem.jsx';
+import CatalogBasketItem from './CatalogBasketItem';
 
 @inject('OrderStore')
 @observer

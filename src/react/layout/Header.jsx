@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderMenu from './HeaderMenu.jsx';
+import HeaderMenu from './HeaderMenu';
 
 export default class Header extends React.Component {
     render() {

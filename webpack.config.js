@@ -27,7 +27,17 @@ module.exports = {
                     plugins: [
                         'react-hot-loader/babel',
                         'transform-decorators-legacy',
-                        'transform-class-properties'
+                        'transform-class-properties',
+                        ["babel-plugin-root-import", [{
+                            "rootPathPrefix": "@",
+                            "rootPathSuffix": "src/react"
+                        }, {
+                            "rootPathPrefix": "#",
+                            "rootPathSuffix": "src/react/stores"
+                        }, {
+                            "rootPathPrefix": "~",
+                            "rootPathSuffix": "src/react/elements"
+                        }]]
                     ]
                 }
             }, {
@@ -49,6 +59,9 @@ module.exports = {
             }
         })
     ],
+    resolve: {
+        extensions: [".jsx", ".js", ".json", "*"],
+    },
     devtool: "inline-source-map",
     devServer: {
         hot: true,

@@ -10,13 +10,27 @@ sass(scss)
 axios
 moment.js
 babel
+babel-root-import
 webpack
 webpack-dev-server
 ```
 
-### Run the example
+## Babel root import
+```
+import Layout from '@/layout/Layout'; //import from root path
+import Input from '~/Input'; //for components
+import StoreName from '#/StoreName'; //for stores
+```
+
+### Run example
 
 ```
 npm install
 npm start
+```
+
+### Build
+
+```
+npm run build
 ```

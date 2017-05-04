@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import {Provider} from 'mobx-react';
 
-import CatalogStore from './stores/CatalogStore.js';
-import OrderStore from './stores/OrderStore.js';
+import CatalogStore from '#/CatalogStore';
+import OrderStore from '#/OrderStore';
 
-import Layout from './layout/Layout.jsx';
-import Catalog from './pages/catalog/Catalog.jsx';
-import Basket from './pages/basket/Basket.jsx';
+import Layout from '@/layout/Layout';
+import Catalog from '@/pages/catalog/Catalog';
+import Basket from '@/pages/basket/Basket';
 
 import {AppContainer} from 'react-hot-loader'
 
