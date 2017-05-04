@@ -53,7 +53,6 @@ module.exports = {
             }
         }),
         new webpack.optimize.UglifyJsPlugin({
-            comments: false,
             beautify: false,
             comments: false,
             mangle: {
