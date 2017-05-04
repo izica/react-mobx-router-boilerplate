@@ -4,11 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        'react-hot-loader/patch',
         './src/react/App.jsx',
-        './src/scss/app.scss',
+        './src/scss/app.scss'
     ],
     output: {
         filename: './assets/js/bundle.js'
@@ -22,11 +19,10 @@ module.exports = {
                 query: {
                     presets: [
                         'react',
-                        'es2015',
+                        ["es2015", {"modules": false}],
                         'stage-1'
                     ],
                     plugins: [
-                        'react-hot-loader/babel',
                         'transform-decorators-legacy',
                         'transform-class-properties'
                     ]
@@ -41,19 +37,31 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            comments: false,
+            beautify: false,
+            comments: false,
+            mangle: {
+                except: ['$super', '$', 'exports', 'require']
+            }
+        }),
         new webpack.LoaderOptionsPlugin({
             test: /\.scss$/,
             minimize: true,
+            comments: false,
             options: {
-                sassLoader: {
-                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
-                },
-                postcss: [
-                    require('precss'),
-                    require('autoprefixer')
-                ],
+                postcss: [require('precss'), require('autoprefixer')]
             }
         }),
-        new ExtractTextPlugin('./assets/css/styles.css'),
-    ],
+
+        new ExtractTextPlugin({
+            filename: './assets/css/styles.css',
+            allChunks: true
+        })
+    ]
 };

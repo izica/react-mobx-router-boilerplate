@@ -40,26 +40,19 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.LoaderOptionsPlugin({
             test: /\.scss$/,
-            minimize: true,
             options: {
-                sassLoader: {
-                    includePaths: [path.resolve(__dirname, 'src', 'scss')]
-                },
                 postcss: [
                     require('precss'),
                     require('autoprefixer')
                 ],
                 context: './',
-                output: {
-                    path: './assets/css/styles.css'
-                }
             }
         })
     ],
+    devtool: "inline-source-map",
     devServer: {
         hot: true,
         historyApiFallback: true,
         inline: true,
-        contentBase: './',
     }
 };

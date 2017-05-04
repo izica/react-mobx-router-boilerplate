@@ -21,6 +21,7 @@ const App = props => {
         <BrowserRouter>
             <Provider {...stores}>
                 <Layout>
+                    <Route exact path="/" component={Catalog}/>
                     <Route path='/catalog' component={Catalog}/>
                     <Route path='/basket' component={Basket}/>
                 </Layout>
