@@ -7,7 +7,7 @@ react-hot-loader
 react-router v4
 postcss
 sass(scss)
-axios
+superagent
 moment.js
 babel
 babel-root-import

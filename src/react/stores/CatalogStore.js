@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import axios from 'axios';
+import superagent from 'superagent';
 
 class CatalogStore {
     @observable items = Array();
@@ -10,9 +10,12 @@ class CatalogStore {
     }
 
     @action getList(){
-        axios.get('/items.json')
-            .then(response => this.items = response.data.items)
-            .catch(error => console.log(error));
+        superagent.get('/items.json')
+            .end((error, response) => {
+                if(response.ok){
+                    this.items = response.body.items;
+                }
+            });
     }
 }
 export default new CatalogStore();
