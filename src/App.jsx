@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter } from 'react-router-dom';
 import Router from './Router';
+import Layout from './layout/Layout';
 
 
 const App = props => {
     return (
         <BrowserRouter>
-            <Router/>
+            <Layout>
+                <Router/>
+            </Layout>
         </BrowserRouter>
     )
 }
