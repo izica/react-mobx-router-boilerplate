@@ -6,8 +6,8 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
         'react-hot-loader/patch',
-        './src/react/App.jsx',
-        './src/scss/app.scss',
+        './src/App.jsx',
+        './src/shared/styles/app.scss',
     ],
     output: {
         filename: './assets/js/bundle.js'
@@ -29,14 +29,8 @@ module.exports = {
                         'transform-decorators-legacy',
                         'transform-class-properties',
                         ["babel-plugin-root-import", [{
-                            "rootPathPrefix": "@",
-                            "rootPathSuffix": "src/react"
-                        }, {
-                            "rootPathPrefix": "#",
-                            "rootPathSuffix": "src/react/stores"
-                        }, {
-                            "rootPathPrefix": "~",
-                            "rootPathSuffix": "src/react/elements"
+                            "rootPathPrefix": "!",
+                            "rootPathSuffix": "src/shared"
                         }]]
                     ]
                 }
