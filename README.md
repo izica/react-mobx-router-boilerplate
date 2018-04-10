@@ -1,9 +1,9 @@
 # React + Mobx boilerplate
 ## main packages:
 ```
-react
+react v16.3
 mobx
-react router
+react router v4
 sass(scss)
 superagent
 webpack
@@ -11,9 +11,9 @@ webpack
 
 ## Babel root import
 ```
-import Service from '!/services'; 
-import Store from '!/stores'; 
-import Input from '!/uikit';
+import { Service } from '!/services'; 
+import { Store } from '!/stores'; 
+import { Input } from '!/uikit';
 ```
 
 ### Run example
