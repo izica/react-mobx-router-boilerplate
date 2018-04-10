@@ -1,36 +1,30 @@
 # React + Mobx boilerplate
 ## main packages:
 ```
-mobx
 react
-react-hot-loader
-react-router v4
-postcss
+mobx
+react router
 sass(scss)
 superagent
-moment.js
-babel
-babel-root-import
 webpack
-webpack-dev-server
 ```
 
 ## Babel root import
 ```
-import Layout from '@/layout/Layout'; //import from root path
-import Input from '~/Input'; //for components
-import StoreName from '#/StoreName'; //for stores
+import Service from '!/services'; 
+import Store from '!/stores'; 
+import Input from '!/uikit';
 ```
 
 ### Run example
 
 ```
-npm install
-npm start
+yarn
+yarn start
 ```
 
 ### Build
 
 ```
-npm run build
+yarn build
 ```
